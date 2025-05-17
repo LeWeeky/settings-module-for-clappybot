@@ -4,18 +4,18 @@ const { isCreator } = require("../utils/permissions/isCreator");
 
 async function parse(interaction, cmd, args)
 {
-	// Défini le serveur actuel comme serveur "propriétaire" du bot
-	// c'est ici que pourront être exécutées toutes les fonctionnalités
-	// qui ont le paramètre "any_guild: false"
+	// Set the current server as the bot's ‘owner’ server
+	// this is where all functions can be executed
+	// which have the ‘any_guild: false’ parameter
 	clappybot.setGuild(interaction.guild.id)
 	if (interaction.options)
 	{
-		// Commande slash (/command)
+		// Slash command (/command)
 		interaction.reply({content: "Guild updated!"})
 	}
 	else
 	{
-		// Commande classique (+command)
+		// Classic command (+command)
 		interaction.channel.send({content: "Guild updated!"})
 	}
 }

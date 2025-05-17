@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
-const { clappybot } = require("../../../main");
+
 const { CHANNELS_TABLE } = require("../../../libraries/data");
 
 function isCreator(member)
@@ -9,27 +9,24 @@ function isCreator(member)
 
 async function parse(interaction, cmd, args)
 {
-	// Défini le serveur actuel comme serveur "propriétaire" du bot
-	// c'est ici que pourront être exécutées toutes les fonctionnalités
-	// qui ont le paramètre "any_guild: false"
+	// Set the current channel as the one for announcements
+	// updates and information.
 	if (interaction.options)
 	{
 		const channel = interaction.options.getChannel("channel");
 		await CHANNELS_TABLE.set(`channel.support`, channel.id);
-		// Commande slash (/command)
+		// Slash command (/command)
 		interaction.reply({content: `Announcements will be sent to <#${channel.id}> from now on!`})
 	}
 	else
 	{
-		// Commande classique (+command)
-
+		// Classic command (+command)
 		if (args.length == 0)
 		{
 			interaction.channel.send("Sorry but, you forgot to mention channel ID!")
 		}
 		else if (args.length == 1)
 		{
-			console.log(cmd, args)
 			if (interaction.guild.channels.cache.has(args[0]))
 			{
 				await CHANNELS_TABLE.set(`channel.support`, args[0]);

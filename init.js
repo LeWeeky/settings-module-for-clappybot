@@ -7,7 +7,6 @@ async function init_module(connection)
 	await Status.init();
 
 	globalThis.bot_activities = await Status.all();
-	console.log(globalThis.bot_activities)
 }
 
 module.exports = {
