@@ -1,0 +1,15 @@
+const { clappybot } = require("../../main")
+const { Status } = require("./models/Status")
+
+async function init_module(connection)
+{
+	Status.use(clappybot.database);
+	await Status.init();
+
+	globalThis.bot_activities = await Status.all();
+	console.log(globalThis.bot_activities)
+}
+
+module.exports = {
+	init_module
+}

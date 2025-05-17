@@ -1,0 +1,10 @@
+{
+	"title":
+		"MyBotSettings",
+	"emoji":
+		"⚙️",
+	"icon":
+		"bi-gear",
+	"description":
+		"A module for configuring a clappybot!"
+}
